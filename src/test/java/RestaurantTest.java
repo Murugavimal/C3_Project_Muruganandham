@@ -84,9 +84,5 @@ class RestaurantTest {
         assertEquals(319+269, restaurant.getOrderValue(itemNames));
     }
 
-
-
-
-
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }

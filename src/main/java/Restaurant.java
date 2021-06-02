@@ -21,30 +21,28 @@ public class Restaurant {
 
     public boolean isRestaurantOpen() {
         LocalTime time = getCurrentTime();
-        if (time.compareTo(openingTime) >= 0 && time.compareTo(closingTime) < 0)
-            return true;
+        if (time.compareTo(openingTime)>=0 && time.compareTo(closingTime)<0)
+        return true;
         else
             return false;
     }
 
-    public LocalTime getCurrentTime() {
-        return LocalTime.now();
-    }
+    public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
     public List<Item> getMenu() {
         return menu;
     }
 
-    private Item findItemByName(String itemName) {
-        for (Item item : menu) {
-            if (item.getName().equals(itemName))
+    private Item findItemByName(String itemName){
+        for(Item item: menu) {
+            if(item.getName().equals(itemName))
                 return item;
         }
         return null;
     }
 
     public void addToMenu(String name, int price) {
-        Item newItem = new Item(name, price);
+        Item newItem = new Item(name,price);
         menu.add(newItem);
     }
 
@@ -56,13 +54,12 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
-
-    public void displayDetails() {
-        System.out.println("Restaurant:" + name + "\n"
-                + "Location:" + location + "\n"
-                + "Opening time:" + openingTime + "\n"
-                + "Closing time:" + closingTime + "\n"
-                + "Menu:" + "\n" + getMenu());
+    public void displayDetails(){
+        System.out.println("Restaurant:"+ name + "\n"
+                +"Location:"+ location + "\n"
+                +"Opening time:"+ openingTime +"\n"
+                +"Closing time:"+ closingTime +"\n"
+                +"Menu:"+"\n"+getMenu());
 
     }
 
@@ -70,8 +67,17 @@ public class Restaurant {
         return name;
     }
 
-    public int getOrderValue(ArrayList<String> itemNames) {
-        return 0;
-
+    public int getOrderValue(ArrayList <String> itemNames) {
+        int value=0;
+        for(String itemName : itemNames)
+        {
+            for(Item item : menu)
+               if( item.getName().equals(itemName) )
+               {
+                  value+= item.getPrice();
+               }
+            }
+        return  value;
     }
+
 }
